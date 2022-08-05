@@ -1,5 +1,9 @@
-package com.ecommerce.services;
+package com.ecommerce.service;
 
+import com.ecommerce.model.Order;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -10,17 +14,17 @@ import java.util.Properties;
 public class FraudDetectorService
 {
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		var fraudDetectorService = new FraudDetectorService();
 		try (var service = new KafkaService(FraudDetectorService.class.getSimpleName(),
-			"ECOMMERCE_NEW_ORDER", fraudDetectorService::parse))
+			"ECOMMERCE_NEW_ORDER", fraudDetectorService::parse, Order.class, new HashMap<>()))
 		{
 			service.run();
 		}
 	}
 
-	private void parse(ConsumerRecord<String, String> record)
+	private void parse(ConsumerRecord<String, Order> record)
 	{
 		System.out.println("------------------------------------------");
 		System.out.println("Processing new order, checking for fraud");

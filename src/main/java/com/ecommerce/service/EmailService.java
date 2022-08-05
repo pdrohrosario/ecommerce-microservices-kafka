@@ -1,5 +1,6 @@
-package com.ecommerce.services;
+package com.ecommerce.service;
 
+import java.util.HashMap;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 public class EmailService
@@ -8,7 +9,7 @@ public class EmailService
 	public static void main(String[] args)
 	{
 		var emailService = new EmailService();
-		var service = new KafkaService(EmailService.class.getSimpleName(),"ECOMMERCE_SEND_EMAIL", emailService::parse);
+		var service = new KafkaService(EmailService.class.getSimpleName(),"ECOMMERCE_SEND_EMAIL", emailService::parse,String.class, new HashMap<>());
 
 		service.run();
 	}
