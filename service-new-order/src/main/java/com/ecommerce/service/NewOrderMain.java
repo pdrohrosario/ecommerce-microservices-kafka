@@ -1,4 +1,4 @@
-package com.ecommerce;
+package com.ecommerce.service;
 
 import com.ecommerce.dispatcher.KafkaDispatcher;
 import com.ecommerce.model.Order;

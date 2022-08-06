@@ -1,7 +1,7 @@
 package com.ecommerce.service;
 
-import com.ecommerce.interfaces.ConsumerFunction;
 import com.ecommerce.utils.GsonDeserializer;
+import com.ecommerce.interfaces.ConsumerFunction;
 import java.io.Closeable;
 import java.io.IOException;
 import java.time.Duration;
